@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+    const supported = ['en','bn','hi','es','ru'];
+
+    function getLang() {
+      const saved = localStorage.getItem("lang");
+      if (saved && supported.includes(saved)) return saved;
+
+      const browserLang = navigator.language.slice(0,2);
+
+      if (supported.includes(browserLang)) {
+        localStorage.setItem("lang", browserLang);
+        return browserLang;
+      }
+
+      return 'en';
+    }
+
+    const lang = getLang();
+    window.location.replace('/' + lang + '/');
+  </script>
+</head>
+<body></body>
+</html>
